@@ -21,13 +21,14 @@ using namespace std;
 
 vector< vector<vector<double> > > zerostart(vector<int> structure)
 {
-    vector<vector<double[2]> > output;
+    vector<vector<vector<double[2]> >> output;
 
     for (int i = 0; i < structure.size(); i++)
     {
         for (int i1 = 0; i1 < structure[i]; i1++)
         {
-            output[i][i1] = {0, 0};
+            output[i][i1][0] = 0;
+            output[i][i1][1] = 0;
         }
     }
     return(output);

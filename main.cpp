@@ -15,19 +15,12 @@ using namespace std;
 
 
 int main() {
-    Network Brain(10, 10);
-    int v2;
-    int v1;
-    while (true) {
-        srand (time(NULL));
-
-            // Get a random number
-        v1 = rand() % 12000000;
-        v2 = rand(v1) % 100 + 1;
-        cout << v2 << endl;
-    }
     
+    
+    RNetwork RNet;
+    RNet.Brain = zerostart;
 
+    cout << RNet.Brain[0][0][0] << endl;
         // Print the random number
     //cout<<v2<<endl;
     
