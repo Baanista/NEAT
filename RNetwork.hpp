@@ -25,6 +25,21 @@ class RNetworker
     public:
         vector< vector<vector<double> > > Brain;
 
+    vector<double> plugin(vector<double> input)
+    {
+        vector<double> output;
+        
+        for (int l = 0; l < Brain.size(); l++)
+        {
+            for (int p = 0; p < Brain.size(); p++)
+            {
+                
+            }
+        }
+
+        return(output);
+    }
+
 };
 
 #endif
