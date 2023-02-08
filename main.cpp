@@ -42,11 +42,16 @@ int main()
 {
     RNetworker RNet;
 
-    vector<int> bstruct = {1, 2, 1};
+    vector<int> bstruct;
+    bstruct.push_back(1);
+    bstruct.push_back(2);
+    bstruct.push_back(1);
+
     vector<vector<vector<double> > > temp = zerostart(bstruct);
     RNet.Brain = temp;
+    
 
     cout << RNet.Brain[0][0][0] << endl;
-//
+
     return 0;
 }
