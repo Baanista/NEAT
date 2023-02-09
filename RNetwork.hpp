@@ -23,22 +23,26 @@ using namespace std;
 class RNetworker
 {
     public:
-        vector< vector<vector<double> > > Brain;
+        vector<vector<vector<vector<double> > > > Brain;
 
-    vector<double> plugin(vector<double> input)
-    {
-        vector<double> output;
+    // vector<double> plugin(vector<double> input)
+    // {
+    //     vector<double> output;
         
-        for (int l = 0; l < Brain.size(); l++)
-        {
-            for (int p = 0; p < Brain.size(); p++)
-            {
-                
-            }
-        }
+    //     for (int l = 0; l < Brain.size(); l++)
+    //     {
 
-        return(output);
-    }
+    //         for (int a = 0; a < Brain.size(); a++)
+    //         {
+    //             for (int p = 0; p < Brain.size(); p++)
+    //             {
+                    
+    //             }
+    //         }
+    //     }
+
+    //     return(output);
+    // }
 
 };
 
