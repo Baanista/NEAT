@@ -25,24 +25,28 @@ class RNetworker
     public:
         vector<vector<vector<vector<double> > > > Brain;
 
-    // vector<double> plugin(vector<double> input)
-    // {
-    //     vector<double> output;
+    vector<double> plugin(vector<double> input)
+    {
+        vector<double> output;
         
-    //     for (int l = 0; l < Brain.size(); l++)
-    //     {
+        for (int l = 0; l < Brain.size(); l++)
+        {
 
-    //         for (int a = 0; a < Brain.size(); a++)
-    //         {
-    //             for (int p = 0; p < Brain.size(); p++)
-    //             {
+            vector<double> templayer;
+            templayer.resize();
+
+            for (int a = 0; a < Brain[l].size(); a++)
+            {
+                for (int p = 0; p < Brain[l][a].size(); p++)
+                {
                     
-    //             }
-    //         }
-    //     }
 
-    //     return(output);
-    // }
+                }
+            }
+        }
+
+        return(output);
+    }
 
 };
 
