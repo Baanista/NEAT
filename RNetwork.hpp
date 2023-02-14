@@ -28,18 +28,23 @@ class RNetworker
     vector<double> plugin(vector<double> input)
     {
         vector<double> output;
+        vector<double> templayer = input;
         
         for (int l = 0; l < Brain.size(); l++)
         {
 
-            vector<double> templayer;
-            templayer.resize();
+            
 
             for (int a = 0; a < Brain[l].size(); a++)
             {
                 for (int p = 0; p < Brain[l][a].size(); p++)
                 {
-                    
+                    double w1 = Brain[l][a][p][0];
+                    double w2 = Brain[l][a][p][1];
+
+                    double num = (w1 * templayer[p]) + w2;
+
+
 
                 }
             }
