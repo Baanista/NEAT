@@ -14,7 +14,7 @@ using namespace std;
 #include <time.h>
 #include <stdio.h>      
 #include <vector>
-
+#include <iomanip>
 vector<vector<vector<vector<double> > > > zerostart(vector<int> structure)
 {
     int layers = structure.size();
@@ -32,8 +32,8 @@ vector<vector<vector<vector<double> > > > zerostart(vector<int> structure)
             {
                 
                 output[i][a][j].resize(2);
-                output[i][a][j][0] = 0.0;
-                output[i][a][j][1] = 0.0;
+                output[i][a][j][0] = i + a * j;
+                output[i][a][j][1] = i + a * j +1;
             }
     }
     }
@@ -41,21 +41,28 @@ vector<vector<vector<vector<double> > > > zerostart(vector<int> structure)
     return output;
 }
 
-void printnueralnetwork(vector<vector<vector<vector<double> > > > brain)
-{
-    for (int i = 0; i < brain.size(); i++)
-    {
-        for (int a = 0; a < brain[i].size(); a++)
-        {
-            cout << '[';
-            for (int j = 0; j < brain[i][a].size(); j++)
-            {
-                
+void printneuralnetwork(const vector<vector<vector<vector<double>  > > >& net) {
+    for (const auto& a : net) {
+        for (const auto& b : a) {
+            cout << ' ';
+            for (const auto& c : b) {
+                cout << ' ';
+                for (const auto& d : c) {
+                    cout << d << " ";
+                }
+                cout << ' ';
             }
-            cout << '[';
+            cout << ' ';
         }
         cout << endl;
     }
+}
+
+void print_vector(const vector<double>& v) {
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << " ";
+    }
+    cout << endl;
 }
 
 int main()
@@ -63,17 +70,28 @@ int main()
     RNetworker RNet;
 
     vector<int> bstruct;
-    bstruct.push_back(1);
-    bstruct.push_back(2);
-    bstruct.push_back(1);
+    bstruct.push_back(3);
+    bstruct.push_back(3);
+    bstruct.push_back(3);
+    
 
 
-    printf("hello");
+    
     
     vector<vector<vector<vector<double> > > > temp = zerostart(bstruct);
     RNet.Brain = temp;
     
 
-    cout << RNet.Brain[0][0][0][0] << endl;
 
+
+    vector<double> input;
+    input.push_back(1);
+    input.push_back(1);
+    input.push_back(1);
+    
+    printneuralnetwork(RNet.Brain);
+    
+    //vector<double> output = RNet.plugin_info(input);
+    //print_vector(input);
+    //print_vector(output);
 }
