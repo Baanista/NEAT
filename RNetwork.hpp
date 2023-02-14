@@ -25,33 +25,53 @@ class RNetworker
     public:
         vector<vector<vector<vector<double> > > > Brain;
 
-    vector<double> plugin(vector<double> input)
+    vector<double> plugin_info(const vector<double>& data)
+{
+    
+    vector<double> layer = data;
+    vector<double> node;
+
+    for (int i = 0; i < Brain.size(); i++)
     {
-        vector<double> output;
-        vector<double> templayer = input;
         
-        for (int l = 0; l < Brain.size(); l++)
+        vector<double> templayer;
+        for (int f = 0; f < Brain[i].size(); f++)
         {
-
             
-
-            for (int a = 0; a < Brain[l].size(); a++)
+            for (int j = 0; j < Brain[i][f].size(); j++)
             {
-                for (int p = 0; p < Brain[l][a].size(); p++)
-                {
-                    double w1 = Brain[l][a][p][0];
-                    double w2 = Brain[l][a][p][1];
+                //cout << "error" << endl;
+                double w1 = Brain[i][f][j][0];
+                double w2 = Brain[i][f][j][1];
 
-                    double num = (w1 * templayer[p]) + w2;
-
-
-
-                }
+                double num = (w1 * layer[j]) + w2;
+                node.push_back(num);
+                cout << "error" << j << endl;
             }
+            
+            double sum = 0;
+            
+            for (int k = 0; k < node.size(); k++)
+            {
+                sum += node[k];
+            }
+            if (sum >= 0)
+            {
+                templayer.push_back(sum);
+            }
+            else
+            {
+                templayer.push_back(0);
+            }
+            
+            node.clear();
+            
         }
-
-        return(output);
+        layer = templayer;
     }
+
+    return layer;
+}
 
 };
 
