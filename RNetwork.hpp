@@ -19,17 +19,29 @@
 #include <vector>
 using namespace std;
 
+// float randomWeight()
+// {
+//     return((float(rand())/float((RAND_MAX)) * 2) - 1);
+// }
 
 class RNetworker
 {
     public:
         vector<vector<vector<vector<double> > > > Brain;
 
-    vector<double> plugin_info(const vector<double>& data)
+
+        
+
+vector<double> plugin_info(const vector<double>& data)
 {
     
     vector<double> layer = data;
     vector<double> node;
+    double w1;
+    double w2;
+    double num;
+    double sum;
+    //cout << "test" << randomWeight() << endl;
 
     for (int i = 0; i < Brain.size(); i++)
     {
@@ -38,18 +50,18 @@ class RNetworker
         for (int f = 0; f < Brain[i].size(); f++)
         {
             
-            for (int j = 0; j < Brain[i][f].size(); j++)
+            for (int j = 0; j < Brain[i][f].size() - 1; j++)
             {
                 //cout << "error" << endl;
-                double w1 = Brain[i][f][j][0];
-                double w2 = Brain[i][f][j][1];
+                w1 = Brain[i][f][j][0];
+                w2 = Brain[i][f][j][1];
 
-                double num = (w1 * layer[j]) + w2;
+                num = (w1 * layer[j]) + w2;
                 node.push_back(num);
-                cout << "error" << j << endl;
+                
             }
             
-            double sum = 0;
+            sum = 0;
             
             for (int k = 0; k < node.size(); k++)
             {
@@ -72,6 +84,20 @@ class RNetworker
 
     return layer;
 }
+    double scorer(vector<double> input, vector<double> poutput)
+    {
+        double score = 0;
+
+        vector<double> output = plugin_info(input);
+
+        for (int i = 0; i < output.size(); i++)
+        {
+
+            score += abs(output[i] - poutput[i]);
+        }
+
+        return(score);
+    }
 
 };
 
