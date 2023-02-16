@@ -18,11 +18,16 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+#include <iomanip>
 
-// float randomWeight()
-// {
-//     return((float(rand())/float((RAND_MAX)) * 2) - 1);
-// }
+
+
+float randomWeight()
+{
+    return((float(rand())/float((RAND_MAX))));
+}
+
+
 
 class RNetworker
 {
@@ -84,6 +89,60 @@ vector<double> plugin_info(const vector<double>& data)
 
     return layer;
 }
+    // cbrain is the changed brain
+    void changer(double changing_value)
+    {
+        double add = changing_value * .5;
+        double multiply = changing_value;
+
+        for (int l = 0; l < Brain.size(); l++) {
+
+            for (int a = 0; a < Brain[l].size(); a++) {
+                
+                for (int f = 0; f < Brain[l][a].size() - 1; f++) {
+                    cout << Brain[l][a][f][0] << endl;
+                    cout << Brain[l][a][f][1] << endl;
+                    Brain[l][a][f][0] += randomWeight() * multiply - add;
+                    Brain[l][a][f][1] += randomWeight() * multiply - add;
+
+                    }
+
+            }
+        }
+
+
+    }
+
+    void adaptor(vector<vector<double> > input, vector<vector<double> > output, int batch)
+    {
+        vector<vector<vector<vector<double> > > > edited_brain = Brain;
+
+        double highest_score = 0;
+
+        for (int i = 0; i < input.size(); i++)
+        {
+            highest_score += scorer(input[i],output[i]);
+        }
+        vector<vector<vector<vector<double> > > > best_brain = Brain;
+        RNetworker temp_brain;
+        double temp_score = 0;
+        for (int i = 0; i < batch; i++)
+        {
+            temp_score = 0;
+            
+            temp_brain.Brain = edited_brain;
+
+            for (int i = 0; i < input.size(); i++)
+            {
+                temp_score += temp_brain
+            }
+
+        }
+
+
+
+    }
+
     double scorer(vector<double> input, vector<double> poutput)
     {
         double score = 0;
