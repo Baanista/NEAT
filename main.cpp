@@ -42,10 +42,7 @@ vector<vector<vector<vector<double> > > > zerostart(vector<int> structure)
     return output;
 }
 
-float randomWeight()
-{
-    return((float(rand())/float((RAND_MAX))));
-}
+
 
 vector<vector<vector<vector<double> > > > randstart(vector<int> structure)
 {
@@ -66,9 +63,9 @@ vector<vector<vector<vector<double> > > > randstart(vector<int> structure)
                 
                 output[i][a][j].resize(2);
                 
-                output[i][a][j][0] = randomWeight() * 2;
+                output[i][a][j][0] = randomWeight() * 2 - 1;
                 
-                output[i][a][j][1] = randomWeight() * 2;
+                output[i][a][j][1] = randomWeight() * 2 - 1;
             }
     }
     }
@@ -100,13 +97,15 @@ void print_vector(const vector<double>& v) {
     cout << endl;
 }
 
+
+
 int main()
 {
     RNetworker RNet;
 
     vector<int> bstruct;
     bstruct.push_back(1);
-    bstruct.push_back(3);
+    bstruct.push_back(1);
     bstruct.push_back(1);
     
 
@@ -129,5 +128,25 @@ int main()
     
     print_vector(output);
     double score = RNet.scorer(input, input);
+    cout << "score:" << score << endl;
+    RNet.changer(2);
+    printneuralnetwork(RNet.Brain);
+    score = RNet.scorer(input, input);
+    cout << "score:" << score << endl;
+    RNet.changer(2);
+    printneuralnetwork(RNet.Brain);
+    score = RNet.scorer(input, input);
+    cout << "score:" << score << endl;
+    RNet.changer(2);
+    printneuralnetwork(RNet.Brain);
+    score = RNet.scorer(input, input);
+    cout << "score:" << score << endl;
+    RNet.changer(2);
+    printneuralnetwork(RNet.Brain);
+    score = RNet.scorer(input, input);
+    cout << "score:" << score << endl;
+    RNet.changer(2);
+    printneuralnetwork(RNet.Brain);
+    score = RNet.scorer(input, input);
     cout << "score:" << score << endl;
 }
