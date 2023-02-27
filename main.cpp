@@ -128,25 +128,5 @@ int main()
     
     print_vector(output);
     double score = RNet.scorer(input, input);
-    cout << "score:" << score << endl;
-    RNet.changer(2);
-    printneuralnetwork(RNet.Brain);
-    score = RNet.scorer(input, input);
-    cout << "score:" << score << endl;
-    RNet.changer(2);
-    printneuralnetwork(RNet.Brain);
-    score = RNet.scorer(input, input);
-    cout << "score:" << score << endl;
-    RNet.changer(2);
-    printneuralnetwork(RNet.Brain);
-    score = RNet.scorer(input, input);
-    cout << "score:" << score << endl;
-    RNet.changer(2);
-    printneuralnetwork(RNet.Brain);
-    score = RNet.scorer(input, input);
-    cout << "score:" << score << endl;
-    RNet.changer(2);
-    printneuralnetwork(RNet.Brain);
-    score = RNet.scorer(input, input);
-    cout << "score:" << score << endl;
+    RNet.adaptor()
 }
