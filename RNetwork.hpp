@@ -132,10 +132,13 @@ vector<double> plugin_info(const vector<double>& data)
             
             temp_brain.Brain = edited_brain;
 
+            temp_brain.changer(2);
+
             for (int i = 0; i < input.size(); i++)
             {
-                temp_score += temp_brain
+                temp_score += temp_brain.scorer(input[i], output[i]);
             }
+            cout << "tempscore" << temp_score << endl;
 
         }
 
