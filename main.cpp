@@ -101,6 +101,7 @@ void print_vector(const vector<double>& v) {
 
 int main()
 {
+    
     RNetworker RNet;
 
     vector<int> bstruct;
@@ -122,11 +123,30 @@ int main()
     input.push_back(1);
 
     
-    printneuralnetwork(RNet.Brain);
+    
     print_vector(input);
     vector<double> output = RNet.plugin_info(input);
     
     print_vector(output);
     double score = RNet.scorer(input, input);
-    RNet.adaptor()
+    printneuralnetwork(RNet.Brain);
+    cout << "score" << score << endl;
+
+    
+    vector<vector<double> > betterinput;
+    //cout << "debug" << endl;
+    vector<double> addtemp;
+    addtemp.push_back(0);
+
+    for (int i = 0; i < 1000; i++)
+    {
+        //cout << "debug" << endl;
+        betterinput.push_back(addtemp);
+        betterinput[i].push_back(i*i);
+    }
+    
+    //RNet.adaptor(betterinput, betterinput, 1);
+    score = RNet.scorer(input, input);
+    printneuralnetwork(RNet.Brain);
+    cout << "score" << score << endl;
 }

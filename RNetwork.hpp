@@ -100,8 +100,8 @@ vector<double> plugin_info(const vector<double>& data)
             for (int a = 0; a < Brain[l].size(); a++) {
                 
                 for (int f = 0; f < Brain[l][a].size() - 1; f++) {
-                    cout << Brain[l][a][f][0] << endl;
-                    cout << Brain[l][a][f][1] << endl;
+                    //cout << Brain[l][a][f][0] << endl;
+                    //cout << Brain[l][a][f][1] << endl;
                     Brain[l][a][f][0] += randomWeight() * multiply - add;
                     Brain[l][a][f][1] += randomWeight() * multiply - add;
 
@@ -115,6 +115,7 @@ vector<double> plugin_info(const vector<double>& data)
 
     void adaptor(vector<vector<double> > input, vector<vector<double> > output, int batch)
     {
+        cout << "debug" << endl;
         vector<vector<vector<vector<double> > > > edited_brain = Brain;
 
         double highest_score = 0;
@@ -125,9 +126,13 @@ vector<double> plugin_info(const vector<double>& data)
         }
         vector<vector<vector<vector<double> > > > best_brain = Brain;
         RNetworker temp_brain;
+        cout << "size" << input.size() << endl;
         double temp_score = 0;
+        
         for (int i = 0; i < batch; i++)
         {
+            //cout << "debug" << endl;
+            
             temp_score = 0;
             
             temp_brain.Brain = edited_brain;
@@ -137,8 +142,14 @@ vector<double> plugin_info(const vector<double>& data)
             for (int i = 0; i < input.size(); i++)
             {
                 temp_score += temp_brain.scorer(input[i], output[i]);
+                //cout << "debug" << endl;
             }
-            cout << "tempscore" << temp_score << endl;
+            if (temp_score > highest_score)
+            {
+                highest_score = temp_score;
+
+                Brain = temp_brain.Brain;
+            }
 
         }
 
@@ -154,7 +165,7 @@ vector<double> plugin_info(const vector<double>& data)
 
         for (int i = 0; i < output.size(); i++)
         {
-
+            cout << "thing" << abs(output[i] - poutput[i]) << endl;
             score += abs(output[i] - poutput[i]);
         }
 
